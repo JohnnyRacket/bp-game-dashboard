@@ -11,7 +11,7 @@ const app = express();
 app.use(bodyParser.urlencoded({
     extended: true
 }));
-app.use(bodyParser.json({limit: '5mb', type: 'application/json'}));
+app.use(bodyParser.json({ limit: '5mb', type: 'application/json' }));
 
 const server = http.createServer(app);
 const io = socketIo(server);
@@ -30,7 +30,7 @@ io.on("connection", socket => {
 app.post("/api/gamestate/:id", function (req, res, next) {
     const matchId = req.params.id;
     //if this is the edge devices first time reporting in add it to tables
-    if(!tables.some(m => m.id === matchId)) tables.push(matchId);
+    if (!tables.some(m => m.id === matchId)) tables.push(matchId);
     // first lets parse the body here
     console.log("gamestate update from table " + matchId)
     //console.log(req.body);
@@ -47,19 +47,36 @@ app.post("/api/gamestate/:id", function (req, res, next) {
                 bInactiveCups += 1;
             }
         }
-        match = {
-            id: matchId,
-            a: {
-                cups: (10 - aInactiveCups),
-                name: "Team1"
-            },
-            b: {
-                cups: (10 - bInactiveCups),
-                Name: "Team2"
-            },
-            image: "data:image/png;base64," + req.body.image || ""
-        }
     });
+
+    let locations = req.body.boxes.filter(o => {
+        if (o.Class === "active bp cup") {
+            return true;
+        }
+        return false;
+    });
+    // console.log(locations);
+    // normalize heights on wild boxes
+    locations.map(o => {
+        if (o.Bottom - o.Top > 50) o.Top = o.Top - ((o.Bottom - o.Top - 50) / 2)
+    })
+    locations = locations.map(o => ({ x: Math.floor((o.Left / 704) * 100), y: Math.floor((o.Top / 320) * 100) }));
+    locations.sort(function (a, b) {
+        return a.y - b.y;
+    });
+    match = {
+        id: matchId,
+        a: {
+            cups: (10 - aInactiveCups),
+            name: "Team1"
+        },
+        b: {
+            cups: (10 - bInactiveCups),
+            Name: "Team2"
+        },
+        image: "data:image/png;base64," + req.body.image || "",
+        locations: locations
+    }
     io.sockets.emit("gamestate_update", match);
     res.status(200).send();
 });

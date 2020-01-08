@@ -28,7 +28,7 @@ function App() {
   }
 
   useEffect(() => {
-    const socket = socketIOClient(); // same origin so no need for a url here
+    const socket = socketIOClient('http://192.168.1.2:4001'); // same origin so no need for a url here
     socket.on("gamestate_update", data => {
       console.log(data);
       const found = matches.some(m => m.id === data.id);
@@ -65,13 +65,13 @@ function App() {
       <div className="elevation-1" style={{ padding: '1rem', marginBottom: '4rem' }}>
         <div className="container" style={{ display: 'flex', flexDirection: 'row', justifyContent: "space-between", alignItems: 'center' }}>
           <div style={{display: 'flex'}}><img src={logo} style={{ width: '4rem', paddingRight: '1rem' }} /><h1>Beer Pong Match Dashboard</h1></div>
-          <button class="input semi-rounded blue" onClick={openModal}>{"Create Match"}</button>
+          <button className="input semi-rounded blue" onClick={openModal}>{"Create Match"}</button>
 
         </div>
       </div>
       <div className="container">
         {matches.map((m, i) =>
-          <GameCard key={m.id} t1Cups={m.a.cups} t1Name={m.a.name} t2Cups={m.b.cups} t2Name={m.b.name} image={m.image} number={i + 1} />
+          <GameCard key={m.id} t1Cups={m.a.cups} t1Name={m.a.name} t2Cups={m.b.cups} t2Name={m.b.name} image={m.image} locations={m.locations} number={i + 1} />
         )}
 
       </div>
