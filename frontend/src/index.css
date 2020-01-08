@@ -1,0 +1,157 @@
+
+html {
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+body{
+  margin: 0;
+}
+h1{
+  margin: .5rem, 0;
+}
+p {
+  margin: .5rem 0;
+}
+textarea{
+  vertical-align: top;
+}
+
+.rounded {
+  border-radius: 1rem;
+}
+
+.semi-rounded{
+  border-radius: .25rem;
+}
+
+.input{
+  padding: .5rem 1rem;
+  margin: .5rem;
+  background-color: white;
+  color: #555;
+  border: 1px solid #aaa;
+  outline: none;
+  overflow:hidden;
+  transition: 250ms;
+}
+
+.input:hover{
+  border-color: #333;
+  color: #000;
+}
+
+.standard{
+  padding: 1rem;
+  margin: .5rem;  
+}
+
+
+.blue{
+  background: #0fbcf9;
+  color: #fff;
+  border: 1px solid #0fbcf9;
+}
+
+.blue:hover,.blue:focus{
+  background: #05a3f0;
+  border: 1px solid #05a3f0;
+  color: #fff;
+}
+
+.orange{
+  background: #ffc048;
+  color: #fff;
+  border: 1px solid #ffc048;
+}
+
+.orange:hover,.orange:focus{
+  background: #ffa801;
+  border: 1px solid #ffa801;
+  color: #fff;
+}
+
+
+.green{
+  background: #2ed573;
+  color: #fff;
+  border: 1px solid #2ed573;
+}
+
+.green:hover, .green:focus{
+  background: #14c053;
+  border: 1px solid #14c053;
+  color: #fff;
+}
+
+.elevation-1{
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+.elevation-2{
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.075);
+}
+
+.elevation-3{
+  box-shadow: 0 8px 12px -2px rgba(0, 0, 0, 0.1), 0 4px 8px -2px rgba(0, 0, 0, 0.05);
+}
+
+.elevation-4{
+  box-shadow: 0 16px 24px -4px rgba(0, 0, 0, 0.1), 0 8px 16px -4px rgba(0, 0, 0, 0.025);
+}
+
+.hover-elevation-1:hover{
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+.hover-elevation-2:hover{
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.075);
+}
+
+.hover-elevation-3:hover{
+    box-shadow: 0 8px 12px -2px rgba(0, 0, 0, 0.1), 0 4px 8px -2px rgba(0, 0, 0, 0.05);
+}
+
+.hover-elevation-4:hover{
+    box-shadow: 0 16px 24px -4px rgba(0, 0, 0, 0.1), 0 8px 16px -4px rgba(0, 0, 0, 0.025);
+}
+
+.dark-background{
+    background: #121212;
+    color: white;
+}
+
+.dark{
+    color: white;
+    background: #2c2c2c;
+    border: 1px solid #2c2c2c;
+}
+
+.dark:hover,.dark:focus{
+    color: white;
+    background: #383838;
+    border: 1px solid #383838;
+}
+
+.standard.dark:hover{
+    background: #2c2c2c;
+    border: 1px solid #2c2c2c;
+}
+
+.note{
+    font-size: .8rem;
+    color: #aaa;
+}
+
+.container{
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.margin1{
+  margin: 0rem .5rem;
+}
+
+.label{
+  font-size: 1rem;
+  font-weight: 500;
+}
